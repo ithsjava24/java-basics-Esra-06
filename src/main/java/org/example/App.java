@@ -6,20 +6,28 @@ import java.text.DecimalFormatSymbols;
 
 public class App {
 
+    private static final int HOURS_IN_DAY = 24;
+    private static int[] elpriser = new int[HOURS_IN_DAY];
+    private static boolean isDataEntered = false;
+
+    // Använd svensk standard för decimalformat
+    private static DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.forLanguageTag("sv-SE"));
+    private static final DecimalFormat formatter = new DecimalFormat("#0.00", symbols);
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean runProgram = true;
 
         while (runProgram) {
             String menu = """
-                Elpriser
-                ========
-                1. Inmatning
-                2. Min, Max och Medel
-                3. Sortera
-                4. Bästa Laddningstid (4h)
-                e. Avsluta
-                """;
+                    Elpriser
+                    ========
+                    1. Inmatning
+                    2. Min, Max och Medel
+                    3. Sortera
+                    4. Bästa Laddningstid (4h)
+                    e. Avsluta
+                    """;
             System.out.println(menu);
 
 
@@ -65,6 +73,7 @@ public class App {
         }
 
         scanner.close();
-        System.out.println("Hello There!");
     }
 }
+
+
